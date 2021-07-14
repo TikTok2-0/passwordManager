@@ -16,6 +16,7 @@
 		F61985A9269E67C6001F334E /* keyGen.py in Resources */ = {isa = PBXBuildFile; fileRef = F61985A1269E67C6001F334E /* keyGen.py */; };
 		F61985AA269E67C6001F334E /* main.py in Resources */ = {isa = PBXBuildFile; fileRef = F61985A2269E67C6001F334E /* main.py */; };
 		F65B20DB269EDC7F0022D8CF /* GenerateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65B20DA269EDC7F0022D8CF /* GenerateKey.swift */; };
+		F672FA9C269F7515008C19E0 /* AddPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672FA9B269F7515008C19E0 /* AddPassword.swift */; };
 		F6A3AB39269E350D0088292E /* PythonCompiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A3AB38269E350D0088292E /* PythonCompiler.swift */; };
 		F6A3AB3E269E3A8D0088292E /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = F6A3AB3D269E3A8D0088292E /* PythonKit */; };
 		F6A3AB40269E4BA80088292E /* PasswordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A3AB3F269E4BA80088292E /* PasswordList.swift */; };
@@ -59,6 +60,7 @@
 		F61985A1269E67C6001F334E /* keyGen.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = keyGen.py; sourceTree = "<group>"; };
 		F61985A2269E67C6001F334E /* main.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = main.py; sourceTree = "<group>"; };
 		F65B20DA269EDC7F0022D8CF /* GenerateKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateKey.swift; sourceTree = "<group>"; };
+		F672FA9B269F7515008C19E0 /* AddPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPassword.swift; sourceTree = "<group>"; };
 		F6A3AB38269E350D0088292E /* PythonCompiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PythonCompiler.swift; sourceTree = "<group>"; };
 		F6A3AB3F269E4BA80088292E /* PasswordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordList.swift; sourceTree = "<group>"; };
 		F6A3AB44269E4E3F0088292E /* GeneratePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratePassword.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				F6B287AD269E2C6D00DB01F2 /* Password Manager Python.entitlements */,
 				F6B28780269E2AB100DB01F2 /* Password_Manager_PythonApp.swift */,
 				F6B28782269E2AB100DB01F2 /* ContentView.swift */,
+				F672FA9B269F7515008C19E0 /* AddPassword.swift */,
 				F65B20DA269EDC7F0022D8CF /* GenerateKey.swift */,
 				F6A3AB44269E4E3F0088292E /* GeneratePassword.swift */,
 				3E42B0C7269EFC11005C5B96 /* Cryptography.swift */,
@@ -331,6 +334,7 @@
 			files = (
 				F65B20DB269EDC7F0022D8CF /* GenerateKey.swift in Sources */,
 				F6A3AB40269E4BA80088292E /* PasswordList.swift in Sources */,
+				F672FA9C269F7515008C19E0 /* AddPassword.swift in Sources */,
 				3E42B0C8269EFC11005C5B96 /* Cryptography.swift in Sources */,
 				F6A3AB39269E350D0088292E /* PythonCompiler.swift in Sources */,
 				F6B2878A269E2AB200DB01F2 /* Persistence.swift in Sources */,

@@ -9,7 +9,8 @@ import SwiftUI
 
 struct PasswordList: View {
     var body: some View {
-        VStack(alignment: .leading) {
+        ScrollView {
+            
             ForEach(0..<51, id: \.self) { item in
                 Text("password \(item)")
             }

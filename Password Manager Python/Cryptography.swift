@@ -8,30 +8,48 @@
 import Foundation
 import CryptoSwift
 
-func keyGen(user: String, pass: String) -> [UInt8] {
-    let userName: [UInt8] = Array("\(user)".utf8)
-    let MasterPass: [UInt8] = Array("\(pass)".utf8)
-    var keyBytes: [UInt8]
+func keyGen() -> String {
+    let rndInt1 = Int64.random(in: 0..<9223372036854775807)
+    let rndInt2 = Int64.random(in: 0..<9223372036854775807)
     
-    keyBytes = try PKCS5.PBKDF2(password: userName, salt: MasterPass, iterations: 4096, keyLength: 32, variant: .sha256).calculate()
-    return keyBytes
+    let userName: Array<UInt8> = Array("\(rndInt1)".utf8)
+    let MasterPass: Array<UInt8> = Array("\(rndInt2)".utf8)
+    var keyBytes: Array<UInt8> = Array("187".utf8)
+    
+    do {
+        keyBytes = try PKCS5.PBKDF2(password: userName, salt: MasterPass, iterations: 2048, keyLength: 24, variant: .sha256).calculate()
+    } catch {
+        print(error)
+    }
+    print(keyBytes)
+    //let key = String(bytes: keyBytes, encoding: .utf8)
+    let stringArray = keyBytes.map { String($0) }
+    let key = stringArray.joined(separator: "-")
+    print(key)
+    hashKey(keyBytes: keyBytes)
+    return key
 }
 
 func encryptPass(newPassword: String, key: [UInt8]) -> [UInt8] {
     let pass: [UInt8] = Array("\(newPassword)".utf8)
     
-    let ivInt = Int64.random(in: 0...18446744073709551615)
-    let iv: [UInt8] = Array("\(ivInt)".utf8)
+    let iv: [UInt8] = Array("42069".utf8)
+    var encPass: Array<UInt8> = Array("187".utf8)
     
-    let encPass: [UInt8] = try Blowfish(key: key, blockMode: CBC(iv: iv), padding: .pkcs7).encrypt(pass)
-    return (encPass)
+    do {
+        encPass = try Blowfish(key: key, blockMode: CBC(iv: iv), padding: .pkcs7).encrypt(pass)
+    } catch {
+        print(error)
+    }
+    return encPass
 }
 
 func hashKey(keyBytes: [UInt8]) -> String {
     
-    let key = String(bytes: keyBytes, encoding: .utf8)
+    let stringArray = keyBytes.map { String($0) }
+    let key = stringArray.joined(separator: "")
     
-    let hash = key!.sha256()
+    let hash = key.sha256()
     let jsonString = "{'key1':'\(hash)'}"
 
     if let jsonData = jsonString.data(using: .utf8),
@@ -44,7 +62,7 @@ func hashKey(keyBytes: [UInt8]) -> String {
                 return ("Not a valid JSON Output")
             }
     }
-    let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: userDomainMask).first {
+    /*let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {_ in
         let iPath = documentDirectory.appendingPathComponent("i.txt")
         do {
             try i.read(from: iPath)
@@ -52,5 +70,6 @@ func hashKey(keyBytes: [UInt8]) -> String {
         } catch {
             return("Key was stored as hash key\(i)")
         }
-    }
+    }*/
+    return("Key was stored as hash key -")
 }

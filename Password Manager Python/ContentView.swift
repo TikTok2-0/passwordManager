@@ -17,18 +17,35 @@ struct ContentView: View {
     }
     let hash = "123".sha256()
     
-    @State var currentView: String = "gen"
+    @State var currentView: String = "list"
+    let paddingFloat: CGFloat = 15
+    @State var showSheet: Bool = false
     
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                //Text("\(geometry.size.width) x \(geometry.size.height)")
-                Picker(selection: $currentView, label: Text("")) {
-                    Text("Generate Key").tag("key")
-                    Text("Manage Passwords").tag("list")
-                    Text("Generate Password").tag("gen")
-                    Text("Settings").tag("settings")
-                }.pickerStyle(.segmented).padding().padding(.horizontal, geometry.size.width*0.25)
+                HStack {
+                    Picker(selection: $currentView, label: Text("")) {
+                        Text("Generate Key").tag("key")
+                        Text("Manage Passwords").tag("list")
+                        Text("Generate Password").tag("gen")
+                        Text("Settings").tag("settings")
+                    }.pickerStyle(.segmented).padding().padding(.horizontal, geometry.size.width*0.25)
+                        .frame(width: geometry.size.width-(paddingFloat*2), height: nil, alignment: .center)
+                        .multilineTextAlignment(.center)
+                        .overlay(
+                            HStack {
+                                Spacer()
+                                Button(action: { showSheet.toggle() }) {
+                                    Image(systemName: "plus")
+                                        .imageScale(.large)
+                                }.buttonStyle(.link)
+                                .popover(isPresented: $showSheet, attachmentAnchor: .point(.leading), arrowEdge: .leading) {
+                                    AddPassword()
+                                }
+                            }
+                        )
+                }
                 Divider()
                 if currentView == "key" {
                     GenerateKey()

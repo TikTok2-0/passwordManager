@@ -72,7 +72,11 @@ struct GeneratePassword: View {
                         .overlay(
                             HStack {
                                 Spacer()
-                                Button(action: {}) {
+                                Button(action: {
+                                    let pasteboard = NSPasteboard.general
+                                    pasteboard.clearContents()
+                                    pasteboard.setString(generatedPassword, forType: .string)
+                                }) {
                                     Image(systemName: "doc.on.doc")
                                 }//.padding(.trailing, geometry.size.width*0.05)
                             }
