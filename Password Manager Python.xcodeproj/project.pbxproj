@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E42B0C8269EFC11005C5B96 /* Cryptography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E42B0C7269EFC11005C5B96 /* Cryptography.swift */; };
 		F61985A3269E67C6001F334E /* accessor.py in Resources */ = {isa = PBXBuildFile; fileRef = F619859B269E67C6001F334E /* accessor.py */; };
 		F61985A4269E67C6001F334E /* keyHash.json in Resources */ = {isa = PBXBuildFile; fileRef = F619859C269E67C6001F334E /* keyHash.json */; };
 		F61985A5269E67C6001F334E /* memory.json in Resources */ = {isa = PBXBuildFile; fileRef = F619859D269E67C6001F334E /* memory.json */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3E42B0C7269EFC11005C5B96 /* Cryptography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cryptography.swift; sourceTree = "<group>"; };
 		F619859B269E67C6001F334E /* accessor.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = accessor.py; sourceTree = "<group>"; };
 		F619859C269E67C6001F334E /* keyHash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = keyHash.json; sourceTree = "<group>"; };
 		F619859D269E67C6001F334E /* memory.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = memory.json; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				F6B28782269E2AB100DB01F2 /* ContentView.swift */,
 				F65B20DA269EDC7F0022D8CF /* GenerateKey.swift */,
 				F6A3AB44269E4E3F0088292E /* GeneratePassword.swift */,
+				3E42B0C7269EFC11005C5B96 /* Cryptography.swift */,
 				F6A3AB3F269E4BA80088292E /* PasswordList.swift */,
 				F6A3AB38269E350D0088292E /* PythonCompiler.swift */,
 				F6B287B5269E345200DB01F2 /* example.py */,
@@ -328,6 +331,7 @@
 			files = (
 				F65B20DB269EDC7F0022D8CF /* GenerateKey.swift in Sources */,
 				F6A3AB40269E4BA80088292E /* PasswordList.swift in Sources */,
+				3E42B0C8269EFC11005C5B96 /* Cryptography.swift in Sources */,
 				F6A3AB39269E350D0088292E /* PythonCompiler.swift in Sources */,
 				F6B2878A269E2AB200DB01F2 /* Persistence.swift in Sources */,
 				F6B28783269E2AB100DB01F2 /* ContentView.swift in Sources */,
