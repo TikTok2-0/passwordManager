@@ -8,17 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3E42B0C8269EFC11005C5B96 /* Cryptography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E42B0C7269EFC11005C5B96 /* Cryptography.swift */; };
-		F61985A3269E67C6001F334E /* accessor.py in Resources */ = {isa = PBXBuildFile; fileRef = F619859B269E67C6001F334E /* accessor.py */; };
-		F61985A4269E67C6001F334E /* keyHash.json in Resources */ = {isa = PBXBuildFile; fileRef = F619859C269E67C6001F334E /* keyHash.json */; };
-		F61985A5269E67C6001F334E /* memory.json in Resources */ = {isa = PBXBuildFile; fileRef = F619859D269E67C6001F334E /* memory.json */; };
-		F61985A6269E67C6001F334E /* i.txt in Resources */ = {isa = PBXBuildFile; fileRef = F619859E269E67C6001F334E /* i.txt */; };
-		F61985A7269E67C6001F334E /* testKey.txt in Resources */ = {isa = PBXBuildFile; fileRef = F619859F269E67C6001F334E /* testKey.txt */; };
-		F61985A9269E67C6001F334E /* keyGen.py in Resources */ = {isa = PBXBuildFile; fileRef = F61985A1269E67C6001F334E /* keyGen.py */; };
-		F61985AA269E67C6001F334E /* main.py in Resources */ = {isa = PBXBuildFile; fileRef = F61985A2269E67C6001F334E /* main.py */; };
 		F65B20DB269EDC7F0022D8CF /* GenerateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65B20DA269EDC7F0022D8CF /* GenerateKey.swift */; };
 		F672FA9C269F7515008C19E0 /* AddPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672FA9B269F7515008C19E0 /* AddPassword.swift */; };
 		F672FA9E269F86AE008C19E0 /* GeneratePasswordPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672FA9D269F86AE008C19E0 /* GeneratePasswordPopover.swift */; };
-		F6A3AB39269E350D0088292E /* PythonCompiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A3AB38269E350D0088292E /* PythonCompiler.swift */; };
+		F672FAA0269F9152008C19E0 /* PasswordListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672FA9F269F9152008C19E0 /* PasswordListRow.swift */; };
 		F6A3AB3E269E3A8D0088292E /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = F6A3AB3D269E3A8D0088292E /* PythonKit */; };
 		F6A3AB40269E4BA80088292E /* PasswordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A3AB3F269E4BA80088292E /* PasswordList.swift */; };
 		F6A3AB43269E4CAD0088292E /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F6A3AB42269E4CAD0088292E /* CryptoSwift */; };
@@ -31,7 +24,6 @@
 		F6B2878D269E2AB200DB01F2 /* Password_Manager_Python.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F6B2878B269E2AB200DB01F2 /* Password_Manager_Python.xcdatamodeld */; };
 		F6B28797269E2AB200DB01F2 /* Password_Manager_PythonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B28796269E2AB200DB01F2 /* Password_Manager_PythonTests.swift */; };
 		F6B287A1269E2AB200DB01F2 /* Password_Manager_PythonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B287A0269E2AB200DB01F2 /* Password_Manager_PythonUITests.swift */; };
-		F6B287B6269E345200DB01F2 /* example.py in Resources */ = {isa = PBXBuildFile; fileRef = F6B287B5269E345200DB01F2 /* example.py */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,17 +45,10 @@
 
 /* Begin PBXFileReference section */
 		3E42B0C7269EFC11005C5B96 /* Cryptography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cryptography.swift; sourceTree = "<group>"; };
-		F619859B269E67C6001F334E /* accessor.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = accessor.py; sourceTree = "<group>"; };
-		F619859C269E67C6001F334E /* keyHash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = keyHash.json; sourceTree = "<group>"; };
-		F619859D269E67C6001F334E /* memory.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = memory.json; sourceTree = "<group>"; };
-		F619859E269E67C6001F334E /* i.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = i.txt; sourceTree = "<group>"; };
-		F619859F269E67C6001F334E /* testKey.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testKey.txt; sourceTree = "<group>"; };
-		F61985A1269E67C6001F334E /* keyGen.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = keyGen.py; sourceTree = "<group>"; };
-		F61985A2269E67C6001F334E /* main.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = main.py; sourceTree = "<group>"; };
 		F65B20DA269EDC7F0022D8CF /* GenerateKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateKey.swift; sourceTree = "<group>"; };
 		F672FA9B269F7515008C19E0 /* AddPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPassword.swift; sourceTree = "<group>"; };
 		F672FA9D269F86AE008C19E0 /* GeneratePasswordPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratePasswordPopover.swift; sourceTree = "<group>"; };
-		F6A3AB38269E350D0088292E /* PythonCompiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PythonCompiler.swift; sourceTree = "<group>"; };
+		F672FA9F269F9152008C19E0 /* PasswordListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordListRow.swift; sourceTree = "<group>"; };
 		F6A3AB3F269E4BA80088292E /* PasswordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordList.swift; sourceTree = "<group>"; };
 		F6A3AB44269E4E3F0088292E /* GeneratePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratePassword.swift; sourceTree = "<group>"; };
 		F6B2877D269E2AB100DB01F2 /* Password Manager Python.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password Manager Python.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,7 +63,6 @@
 		F6B2879C269E2AB200DB01F2 /* Password Manager PythonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Password Manager PythonUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6B287A0269E2AB200DB01F2 /* Password_Manager_PythonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password_Manager_PythonUITests.swift; sourceTree = "<group>"; };
 		F6B287AD269E2C6D00DB01F2 /* Password Manager Python.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Password Manager Python.entitlements"; sourceTree = "<group>"; };
-		F6B287B5269E345200DB01F2 /* example.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = example.py; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,20 +92,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F619859A269E67C6001F334E /* Python Files */ = {
-			isa = PBXGroup;
-			children = (
-				F619859B269E67C6001F334E /* accessor.py */,
-				F619859C269E67C6001F334E /* keyHash.json */,
-				F619859D269E67C6001F334E /* memory.json */,
-				F619859E269E67C6001F334E /* i.txt */,
-				F619859F269E67C6001F334E /* testKey.txt */,
-				F61985A1269E67C6001F334E /* keyGen.py */,
-				F61985A2269E67C6001F334E /* main.py */,
-			);
-			path = "Python Files";
-			sourceTree = "<group>";
-		};
 		F6B28774269E2AB100DB01F2 = {
 			isa = PBXGroup;
 			children = (
@@ -154,9 +124,7 @@
 				F672FA9D269F86AE008C19E0 /* GeneratePasswordPopover.swift */,
 				3E42B0C7269EFC11005C5B96 /* Cryptography.swift */,
 				F6A3AB3F269E4BA80088292E /* PasswordList.swift */,
-				F6A3AB38269E350D0088292E /* PythonCompiler.swift */,
-				F6B287B5269E345200DB01F2 /* example.py */,
-				F619859A269E67C6001F334E /* Python Files */,
+				F672FA9F269F9152008C19E0 /* PasswordListRow.swift */,
 				F6B28784269E2AB200DB01F2 /* Assets.xcassets */,
 				F6B28789269E2AB200DB01F2 /* Persistence.swift */,
 				F6B2878B269E2AB200DB01F2 /* Password_Manager_Python.xcdatamodeld */,
@@ -301,14 +269,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F61985AA269E67C6001F334E /* main.py in Resources */,
-				F61985A5269E67C6001F334E /* memory.json in Resources */,
-				F61985A4269E67C6001F334E /* keyHash.json in Resources */,
-				F61985A9269E67C6001F334E /* keyGen.py in Resources */,
-				F61985A7269E67C6001F334E /* testKey.txt in Resources */,
-				F61985A6269E67C6001F334E /* i.txt in Resources */,
-				F6B287B6269E345200DB01F2 /* example.py in Resources */,
-				F61985A3269E67C6001F334E /* accessor.py in Resources */,
 				F6B28788269E2AB200DB01F2 /* Preview Assets.xcassets in Resources */,
 				F6B28785269E2AB200DB01F2 /* Assets.xcassets in Resources */,
 			);
@@ -340,12 +300,12 @@
 				F6A3AB40269E4BA80088292E /* PasswordList.swift in Sources */,
 				F672FA9C269F7515008C19E0 /* AddPassword.swift in Sources */,
 				3E42B0C8269EFC11005C5B96 /* Cryptography.swift in Sources */,
-				F6A3AB39269E350D0088292E /* PythonCompiler.swift in Sources */,
 				F6B2878A269E2AB200DB01F2 /* Persistence.swift in Sources */,
 				F6B28783269E2AB100DB01F2 /* ContentView.swift in Sources */,
 				F6B2878D269E2AB200DB01F2 /* Password_Manager_Python.xcdatamodeld in Sources */,
 				F6B28781269E2AB100DB01F2 /* Password_Manager_PythonApp.swift in Sources */,
 				F6A3AB45269E4E3F0088292E /* GeneratePassword.swift in Sources */,
+				F672FAA0269F9152008C19E0 /* PasswordListRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
