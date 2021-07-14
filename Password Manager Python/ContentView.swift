@@ -7,58 +7,54 @@
 
 import SwiftUI
 import CoreData
+import PythonKit
+import CryptoSwift
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
-
+    let myPythonScript = PythonObject(contentsOfFile: "example")
+    var helloworld: String {
+        return myPythonScript.swiftOutput().description
+    }
+    let hash = "123".sha256()
+    
+    @State var currentView: String = "gen"
+    
     var body: some View {
-        List {
-            ForEach(items) { item in
-                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+        GeometryReader { geometry in
+            VStack {
+                //Text("\(geometry.size.width) x \(geometry.size.height)")
+                Picker(selection: $currentView, label: Text("")) {
+                    Text("Generate Key")
+                    Text("Manage Passwords").tag("list")
+                    Text("Generate Password").tag("gen")
+                }.pickerStyle(.segmented).padding().padding(.horizontal, geometry.size.width*0.25)
+                Divider()
+                if currentView == "list" {
+                    PasswordList()
+                } else if currentView == "gen" {
+                    GeneratePassword()
+                }
             }
-            .onDelete(perform: deleteItems)
-        }
-        .toolbar {
-            Button(action: addItem) {
-                Label("Add Item", systemImage: "plus")
-            }
-        }
+        }.frame(width: 1200, height: 640, alignment: .leading)
     }
+}
 
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+extension PythonObject {
+    static func loadPythonScript(named filename: String) -> PythonObject {
+        guard let url = Bundle.main.url(forResource: filename, withExtension: "py")?
+                .deletingLastPathComponent() else {
+                    fatalError("Could not get URL for file")
+                }
+        let sys = Python.import("sys")
+        let path = PythonObject(url.path)
+        if !(sys.path.contains(path)) {
+            sys.path.append(path)
         }
+        return Python.import(filename)
     }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
+    
+    init(contentsOfFile filename: String) {
+        self.init(Self.loadPythonScript(named: filename))
     }
 }
 
@@ -74,3 +70,29 @@ struct ContentView_Previews: PreviewProvider {
         ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
+
+
+    /*List {
+        Section(header: Text("Passwords")) {
+            NavigationLink(destination: PasswordList()) {
+                Label("View Passwords", systemImage: "eye.fill")
+            }
+            NavigationLink(destination: Text("test")) {
+                Label("Manage Password", systemImage: "list.bullet")
+            }
+            NavigationLink(destination: Text("test")) {
+                Label("Generate Key", systemImage: "key.fill")
+            }
+            NavigationLink(destination: GeneratePassword()) {
+                Label("Generate Password", systemImage: "dice.fill")
+            }
+        }
+        Section(header: Text("Debugging")) {
+            Text("Python Script: \(helloworld)")
+            Text("Hash: \(hash)")
+            Text("\(geometry.size.width) x \(geometry.size.height)")
+        }
+    }
+    .listStyle(.sidebar)*/
+//.frame(width: geometry.size.width, height: geometry.size.height)
+//.frame(minWidth: 2560*0.15, idealWidth: 2560*0.7, maxWidth: 2560/2, minHeight: 1600*0.15, idealHeight: 1600*0.7, maxHeight: 2560/2, alignment: .center)

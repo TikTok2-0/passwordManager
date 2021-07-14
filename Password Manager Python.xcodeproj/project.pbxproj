@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F6A3AB39269E350D0088292E /* PythonCompiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A3AB38269E350D0088292E /* PythonCompiler.swift */; };
+		F6A3AB3E269E3A8D0088292E /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = F6A3AB3D269E3A8D0088292E /* PythonKit */; };
+		F6A3AB40269E4BA80088292E /* PasswordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A3AB3F269E4BA80088292E /* PasswordList.swift */; };
+		F6A3AB43269E4CAD0088292E /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F6A3AB42269E4CAD0088292E /* CryptoSwift */; };
+		F6A3AB45269E4E3F0088292E /* GeneratePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A3AB44269E4E3F0088292E /* GeneratePassword.swift */; };
 		F6B28781269E2AB100DB01F2 /* Password_Manager_PythonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B28780269E2AB100DB01F2 /* Password_Manager_PythonApp.swift */; };
 		F6B28783269E2AB100DB01F2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B28782269E2AB100DB01F2 /* ContentView.swift */; };
 		F6B28785269E2AB200DB01F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6B28784269E2AB200DB01F2 /* Assets.xcassets */; };
@@ -15,6 +20,7 @@
 		F6B2878D269E2AB200DB01F2 /* Password_Manager_Python.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F6B2878B269E2AB200DB01F2 /* Password_Manager_Python.xcdatamodeld */; };
 		F6B28797269E2AB200DB01F2 /* Password_Manager_PythonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B28796269E2AB200DB01F2 /* Password_Manager_PythonTests.swift */; };
 		F6B287A1269E2AB200DB01F2 /* Password_Manager_PythonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B287A0269E2AB200DB01F2 /* Password_Manager_PythonUITests.swift */; };
+		F6B287B6269E345200DB01F2 /* example.py in Resources */ = {isa = PBXBuildFile; fileRef = F6B287B5269E345200DB01F2 /* example.py */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F6A3AB38269E350D0088292E /* PythonCompiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PythonCompiler.swift; sourceTree = "<group>"; };
+		F6A3AB3F269E4BA80088292E /* PasswordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordList.swift; sourceTree = "<group>"; };
+		F6A3AB44269E4E3F0088292E /* GeneratePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratePassword.swift; sourceTree = "<group>"; };
 		F6B2877D269E2AB100DB01F2 /* Password Manager Python.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password Manager Python.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6B28780269E2AB100DB01F2 /* Password_Manager_PythonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password_Manager_PythonApp.swift; sourceTree = "<group>"; };
 		F6B28782269E2AB100DB01F2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -46,6 +55,8 @@
 		F6B28796269E2AB200DB01F2 /* Password_Manager_PythonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password_Manager_PythonTests.swift; sourceTree = "<group>"; };
 		F6B2879C269E2AB200DB01F2 /* Password Manager PythonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Password Manager PythonUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6B287A0269E2AB200DB01F2 /* Password_Manager_PythonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password_Manager_PythonUITests.swift; sourceTree = "<group>"; };
+		F6B287AD269E2C6D00DB01F2 /* Password Manager Python.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Password Manager Python.entitlements"; sourceTree = "<group>"; };
+		F6B287B5269E345200DB01F2 /* example.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = example.py; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +64,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6A3AB3E269E3A8D0088292E /* PythonKit in Frameworks */,
+				F6A3AB43269E4CAD0088292E /* CryptoSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,8 +109,13 @@
 		F6B2877F269E2AB100DB01F2 /* Password Manager Python */ = {
 			isa = PBXGroup;
 			children = (
+				F6B287AD269E2C6D00DB01F2 /* Password Manager Python.entitlements */,
 				F6B28780269E2AB100DB01F2 /* Password_Manager_PythonApp.swift */,
 				F6B28782269E2AB100DB01F2 /* ContentView.swift */,
+				F6A3AB44269E4E3F0088292E /* GeneratePassword.swift */,
+				F6A3AB3F269E4BA80088292E /* PasswordList.swift */,
+				F6A3AB38269E350D0088292E /* PythonCompiler.swift */,
+				F6B287B5269E345200DB01F2 /* example.py */,
 				F6B28784269E2AB200DB01F2 /* Assets.xcassets */,
 				F6B28789269E2AB200DB01F2 /* Persistence.swift */,
 				F6B2878B269E2AB200DB01F2 /* Password_Manager_Python.xcdatamodeld */,
@@ -146,6 +164,10 @@
 			dependencies = (
 			);
 			name = "Password Manager Python";
+			packageProductDependencies = (
+				F6A3AB3D269E3A8D0088292E /* PythonKit */,
+				F6A3AB42269E4CAD0088292E /* CryptoSwift */,
+			);
 			productName = "Password Manager Python";
 			productReference = F6B2877D269E2AB100DB01F2 /* Password Manager Python.app */;
 			productType = "com.apple.product-type.application";
@@ -218,6 +240,10 @@
 				Base,
 			);
 			mainGroup = F6B28774269E2AB100DB01F2;
+			packageReferences = (
+				F6A3AB3C269E3A8D0088292E /* XCRemoteSwiftPackageReference "PythonKit" */,
+				F6A3AB41269E4CAD0088292E /* XCRemoteSwiftPackageReference "CryptoSwift" */,
+			);
 			productRefGroup = F6B2877E269E2AB100DB01F2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -234,6 +260,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6B287B6269E345200DB01F2 /* example.py in Resources */,
 				F6B28788269E2AB200DB01F2 /* Preview Assets.xcassets in Resources */,
 				F6B28785269E2AB200DB01F2 /* Assets.xcassets in Resources */,
 			);
@@ -260,10 +287,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6A3AB40269E4BA80088292E /* PasswordList.swift in Sources */,
+				F6A3AB39269E350D0088292E /* PythonCompiler.swift in Sources */,
 				F6B2878A269E2AB200DB01F2 /* Persistence.swift in Sources */,
 				F6B28783269E2AB100DB01F2 /* ContentView.swift in Sources */,
 				F6B2878D269E2AB200DB01F2 /* Password_Manager_Python.xcdatamodeld in Sources */,
 				F6B28781269E2AB100DB01F2 /* Password_Manager_PythonApp.swift in Sources */,
+				F6A3AB45269E4E3F0088292E /* GeneratePassword.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,7 +380,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -405,7 +435,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -419,6 +449,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Password Manager Python/Password Manager Python.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -448,6 +479,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Password Manager Python/Password Manager Python.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -608,6 +640,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F6A3AB3C269E3A8D0088292E /* XCRemoteSwiftPackageReference "PythonKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pvieito/PythonKit";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		F6A3AB41269E4CAD0088292E /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F6A3AB3D269E3A8D0088292E /* PythonKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F6A3AB3C269E3A8D0088292E /* XCRemoteSwiftPackageReference "PythonKit" */;
+			productName = PythonKit;
+		};
+		F6A3AB42269E4CAD0088292E /* CryptoSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F6A3AB41269E4CAD0088292E /* XCRemoteSwiftPackageReference "CryptoSwift" */;
+			productName = CryptoSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		F6B2878B269E2AB200DB01F2 /* Password_Manager_Python.xcdatamodeld */ = {
