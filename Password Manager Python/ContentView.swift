@@ -24,12 +24,15 @@ struct ContentView: View {
             VStack {
                 //Text("\(geometry.size.width) x \(geometry.size.height)")
                 Picker(selection: $currentView, label: Text("")) {
-                    Text("Generate Key")
+                    Text("Generate Key").tag("key")
                     Text("Manage Passwords").tag("list")
                     Text("Generate Password").tag("gen")
+                    Text("Settings").tag("settings")
                 }.pickerStyle(.segmented).padding().padding(.horizontal, geometry.size.width*0.25)
                 Divider()
-                if currentView == "list" {
+                if currentView == "key" {
+                    GenerateKey()
+                } else if currentView == "list" {
                     PasswordList()
                 } else if currentView == "gen" {
                     GeneratePassword()

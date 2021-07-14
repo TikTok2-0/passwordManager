@@ -86,8 +86,13 @@ struct GeneratePassword: View {
                 }.frame(width: geometry.size.width/1.5, height: nil, alignment: .center)
                 
                 HStack {
-                    Toggle("Numbers", isOn: $userData.figureChars)
-                        .toggleStyle(.checkbox)
+                    Toggle(isOn: $userData.figureChars) {
+                        HStack {
+                            Text("Numbers")
+                            Text("0-9")
+                                .foregroundColor(.green)
+                        }
+                    }
                     Spacer()
                     Button(action: { generatePassword() }) {
                         Label("Generate password", systemImage: "dice")
@@ -95,9 +100,13 @@ struct GeneratePassword: View {
                 }.frame(width: geometry.size.width/1.5, height: nil, alignment: .center)
                 
                 HStack {
-                    Toggle("Special", isOn: $userData.specialChars)
-                        .toggleStyle(.checkbox)
-                        .onTapGesture { generatePassword() }
+                    Toggle(isOn: $userData.specialChars) {
+                        HStack {
+                            Text("Special")
+                            Text("&-$")
+                                .foregroundColor(.red)
+                        }
+                    }
                     Spacer()
                     Button(action: {}) {
                         Label("Save password", systemImage: "key.icloud")
@@ -105,9 +114,13 @@ struct GeneratePassword: View {
                 }.frame(width: geometry.size.width/1.5, height: nil, alignment: .center)
                 
                 HStack {
-                    Toggle("Uppercase", isOn: $userData.upperChars)
-                        .toggleStyle(.checkbox)
-                        .onTapGesture { generatePassword() }
+                    Toggle(isOn: $userData.upperChars) {
+                        HStack {
+                            Text("Uppercase")
+                            Text("A-Z")
+                                .foregroundColor(.yellow)
+                        }
+                    }
                     Spacer()
                 }.frame(width: geometry.size.width/1.5, height: nil, alignment: .center)
                 

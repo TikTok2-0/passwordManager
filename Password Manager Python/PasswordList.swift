@@ -9,12 +9,11 @@ import SwiftUI
 
 struct PasswordList: View {
     var body: some View {
-        List {
+        VStack(alignment: .leading) {
             ForEach(0..<51, id: \.self) { item in
                 Text("password \(item)")
             }
         }
-        //.listStyle(.inset)
     }
 }
 
