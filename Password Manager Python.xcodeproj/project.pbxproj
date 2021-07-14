@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F61985A3269E67C6001F334E /* accessor.py in Resources */ = {isa = PBXBuildFile; fileRef = F619859B269E67C6001F334E /* accessor.py */; };
+		F61985A4269E67C6001F334E /* keyHash.json in Resources */ = {isa = PBXBuildFile; fileRef = F619859C269E67C6001F334E /* keyHash.json */; };
+		F61985A5269E67C6001F334E /* memory.json in Resources */ = {isa = PBXBuildFile; fileRef = F619859D269E67C6001F334E /* memory.json */; };
+		F61985A6269E67C6001F334E /* i.txt in Resources */ = {isa = PBXBuildFile; fileRef = F619859E269E67C6001F334E /* i.txt */; };
+		F61985A7269E67C6001F334E /* testKey.txt in Resources */ = {isa = PBXBuildFile; fileRef = F619859F269E67C6001F334E /* testKey.txt */; };
+		F61985A9269E67C6001F334E /* keyGen.py in Resources */ = {isa = PBXBuildFile; fileRef = F61985A1269E67C6001F334E /* keyGen.py */; };
+		F61985AA269E67C6001F334E /* main.py in Resources */ = {isa = PBXBuildFile; fileRef = F61985A2269E67C6001F334E /* main.py */; };
 		F6A3AB39269E350D0088292E /* PythonCompiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A3AB38269E350D0088292E /* PythonCompiler.swift */; };
 		F6A3AB3E269E3A8D0088292E /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = F6A3AB3D269E3A8D0088292E /* PythonKit */; };
 		F6A3AB40269E4BA80088292E /* PasswordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A3AB3F269E4BA80088292E /* PasswordList.swift */; };
@@ -41,6 +48,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F619859B269E67C6001F334E /* accessor.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = accessor.py; sourceTree = "<group>"; };
+		F619859C269E67C6001F334E /* keyHash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = keyHash.json; sourceTree = "<group>"; };
+		F619859D269E67C6001F334E /* memory.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = memory.json; sourceTree = "<group>"; };
+		F619859E269E67C6001F334E /* i.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = i.txt; sourceTree = "<group>"; };
+		F619859F269E67C6001F334E /* testKey.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testKey.txt; sourceTree = "<group>"; };
+		F61985A1269E67C6001F334E /* keyGen.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = keyGen.py; sourceTree = "<group>"; };
+		F61985A2269E67C6001F334E /* main.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = main.py; sourceTree = "<group>"; };
 		F6A3AB38269E350D0088292E /* PythonCompiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PythonCompiler.swift; sourceTree = "<group>"; };
 		F6A3AB3F269E4BA80088292E /* PasswordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordList.swift; sourceTree = "<group>"; };
 		F6A3AB44269E4E3F0088292E /* GeneratePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratePassword.swift; sourceTree = "<group>"; };
@@ -86,6 +100,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F619859A269E67C6001F334E /* Python Files */ = {
+			isa = PBXGroup;
+			children = (
+				F619859B269E67C6001F334E /* accessor.py */,
+				F619859C269E67C6001F334E /* keyHash.json */,
+				F619859D269E67C6001F334E /* memory.json */,
+				F619859E269E67C6001F334E /* i.txt */,
+				F619859F269E67C6001F334E /* testKey.txt */,
+				F61985A1269E67C6001F334E /* keyGen.py */,
+				F61985A2269E67C6001F334E /* main.py */,
+			);
+			path = "Python Files";
+			sourceTree = "<group>";
+		};
 		F6B28774269E2AB100DB01F2 = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +144,7 @@
 				F6A3AB3F269E4BA80088292E /* PasswordList.swift */,
 				F6A3AB38269E350D0088292E /* PythonCompiler.swift */,
 				F6B287B5269E345200DB01F2 /* example.py */,
+				F619859A269E67C6001F334E /* Python Files */,
 				F6B28784269E2AB200DB01F2 /* Assets.xcassets */,
 				F6B28789269E2AB200DB01F2 /* Persistence.swift */,
 				F6B2878B269E2AB200DB01F2 /* Password_Manager_Python.xcdatamodeld */,
@@ -260,7 +289,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F61985AA269E67C6001F334E /* main.py in Resources */,
+				F61985A5269E67C6001F334E /* memory.json in Resources */,
+				F61985A4269E67C6001F334E /* keyHash.json in Resources */,
+				F61985A9269E67C6001F334E /* keyGen.py in Resources */,
+				F61985A7269E67C6001F334E /* testKey.txt in Resources */,
+				F61985A6269E67C6001F334E /* i.txt in Resources */,
 				F6B287B6269E345200DB01F2 /* example.py in Resources */,
+				F61985A3269E67C6001F334E /* accessor.py in Resources */,
 				F6B28788269E2AB200DB01F2 /* Preview Assets.xcassets in Resources */,
 				F6B28785269E2AB200DB01F2 /* Assets.xcassets in Resources */,
 			);
