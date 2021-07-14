@@ -10,10 +10,10 @@ import CryptoSwift
 
 func keyGen(user: String, pass: String) -> [UInt8] {
     let userName: [UInt8] = Array("\(user)".utf8)
-    let MasterPass:[UInt8] = Array("\(pass)".utf8)
+    let MasterPass: [UInt8] = Array("\(pass)".utf8)
+    var keyBytes: [UInt8]
     
-    let keyBytes = try PKCS5.PBKDF2(password: userName, salt: MasterPass, iterations: 4096, keyLength: 32, variant: .sha256).calculate()
-    
+    keyBytes = try PKCS5.PBKDF2(password: userName, salt: MasterPass, iterations: 4096, keyLength: 32, variant: .sha256).calculate()
     return keyBytes
 }
 
@@ -24,7 +24,6 @@ func encryptPass(newPassword: String, key: [UInt8]) -> [UInt8] {
     let iv: [UInt8] = Array("\(ivInt)".utf8)
     
     let encPass: [UInt8] = try Blowfish(key: key, blockMode: CBC(iv: iv), padding: .pkcs7).encrypt(pass)
-    
     return (encPass)
 }
 
