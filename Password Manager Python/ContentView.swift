@@ -20,6 +20,7 @@ struct ContentView: View {
     @State var currentView: String = "list"
     let paddingFloat: CGFloat = 15
     @State var showSheet: Bool = false
+    @State var activeSheet: ActiveSheet?
     
     var body: some View {
         GeometryReader { geometry in
@@ -36,12 +37,30 @@ struct ContentView: View {
                         .overlay(
                             HStack {
                                 Spacer()
-                                Button(action: { showSheet.toggle() }) {
+                                Button(action: { activeSheet = .addPassword }) {
                                     Image(systemName: "plus")
                                         .imageScale(.large)
                                 }.buttonStyle(.link)
-                                .popover(isPresented: $showSheet, attachmentAnchor: .point(.leading), arrowEdge: .leading) {
-                                    AddPassword()
+                                .popover(item: $activeSheet, attachmentAnchor: .point(.leading), arrowEdge: .leading) { item in
+                                    switch item {
+                                    case .addPassword:
+                                        AddPassword()
+                                    case .generatePassword:
+                                        GeneratePasswordPopover()
+                                    case .generateKey:
+                                        GenerateKey()
+                                    }
+                                }
+                                .contextMenu {
+                                    Button(action: { activeSheet = .addPassword }) {
+                                        Text("Add Password")
+                                    }
+                                    Button(action: { activeSheet = .generateKey }) {
+                                        Text("Generate Key")
+                                    }
+                                    Button(action: { activeSheet = .generatePassword }) {
+                                        Text("Generate Password")
+                                    }
                                 }
                             }
                         )
@@ -55,7 +74,17 @@ struct ContentView: View {
                     GeneratePassword()
                 }
             }
-        }.frame(width: 1200, height: 640, alignment: .leading)
+        }.frame(width: 900, height: 480, alignment: .leading)
+    }
+}
+
+enum ActiveSheet: Identifiable {
+    case addPassword
+    case generateKey
+    case generatePassword
+    
+    var id: Int {
+        hashValue
     }
 }
 
@@ -95,10 +124,19 @@ class UserData: ObservableObject {
         }
     }
     
+    @Published var keyName: String {
+        didSet {
+            UserDefaults.standard.set(keyName, forKey: "keyName")
+        }
+    }
+    var names = ["Alpha", "Beta", "Delta", "Kappa", "Omega"]
+    
     init() {
         self.upperChars = UserDefaults.standard.object(forKey: "upperChars") as? Bool ?? true
         self.specialChars = UserDefaults.standard.object(forKey: "specialChars") as? Bool ?? true
         self.figureChars = UserDefaults.standard.object(forKey: "upperChars") as? Bool ?? true
+        
+        self.keyName = UserDefaults.standard.object(forKey: "keyName") as? String ?? names[0]
     }
 }
 

@@ -112,8 +112,12 @@ struct GeneratePassword: View {
                         }
                     }
                     Spacer()
-                    Button(action: {}) {
-                        Label("Save password", systemImage: "key.icloud")
+                    Button(action: {
+                        let pasteboard = NSPasteboard.general
+                        pasteboard.clearContents()
+                        pasteboard.setString(generatedPassword, forType: .string)
+                    }) {
+                        Label("Copy to clipboard", systemImage: "doc.on.doc")
                     }
                 }.frame(width: geometry.size.width/1.5, height: nil, alignment: .center)
                 
@@ -126,6 +130,9 @@ struct GeneratePassword: View {
                         }
                     }
                     Spacer()
+                    Button(action: {}) {
+                        Label("Save password", systemImage: "key.icloud")
+                    }
                 }.frame(width: geometry.size.width/1.5, height: nil, alignment: .center)
                 
             }.padding(paddingFloat)

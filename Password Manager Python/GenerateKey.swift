@@ -15,22 +15,30 @@ struct GenerateKey: View {
     
     var body: some View {
         VStack {
-            Button(action: { key = keyGen() }) {
+            Button(action: {
+                self.showAlert.toggle()
+            }) {
                 Label("Generate Key", systemImage: "dice")
+            }.alert(isPresented: $showAlert) {
+                Alert(title: Text("Important"), message: Text("In order to use this tool in a secure manner please write down this key on a piece of paper and do not share it with anyone!\n\nFor security reasons, only 5 keys can be generated. Accordingly, you should carefully generate a new key and keep them safe."), primaryButton: .cancel(), secondaryButton: .default(Text("Generate"), action: { key = keyGen() }))
             }
             
-            Text("Generated Key:")
-            Text("\(key)")
+            VStack {
+                Text("Generated Key:").fontWeight(.bold)
+                Text("\(key)")
+            }.padding()
+            
+            VStack {
+                Text("Key Name:").fontWeight(.bold)
+                Text("\(UserData().keyName)")
+            }.padding(.bottom)
             
             Button(action: {
                 let pasteboard = NSPasteboard.general
                 pasteboard.clearContents()
                 pasteboard.setString(key, forType: .string)
-                self.showAlert.toggle()
             }) {
                 Label("Copy to clipboard", systemImage: "doc.on.doc")
-            }.alert(isPresented: $showAlert) {
-                Alert(title: Text("Important"), message: Text("In order to use this tool in a secure manner please write down this key on a piece of paper and do not share it with anyone!"), dismissButton: .destructive(Text("Close")))
             }
         }
     }
