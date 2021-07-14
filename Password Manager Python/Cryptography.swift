@@ -37,15 +37,21 @@ func hashKey(keyBytes: [UInt8]) -> String {
 
     if let jsonData = jsonString.data(using: .utf8),
         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-        let pathWithFilename = documentDirectory.appendingPathComponent("memory.json")
-        
+            let memoryPath = documentDirectory.appendingPathComponent("memory.json")
+            
+            do {
+                try jsonData.write(to: memoryPath)
+            } catch {
+                return ("Not a valid JSON Output")
+            }
+    }
+    let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: userDomainMask).first {
+        let iPath = documentDirectory.appendingPathComponent("i.txt")
         do {
-            try jsonData.write(to: pathWithFilename)
+            try i.read(from: iPath)
+            i += 1
         } catch {
-            return ("Not a valid JSON Output")
+            return("Key was stored as hash key\(i)")
         }
     }
-    
-    let filePath = #filePath
-    return(filePath)
 }
