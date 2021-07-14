@@ -58,6 +58,30 @@ extension PythonObject {
     }
 }
 
+class UserData: ObservableObject {
+    @Published var upperChars: Bool {
+        didSet {
+            UserDefaults.standard.set(upperChars, forKey: "upperChars")
+        }
+    }
+    @Published var specialChars: Bool {
+        didSet {
+            UserDefaults.standard.set(specialChars, forKey: "specialChars")
+        }
+    }
+    @Published var figureChars: Bool {
+        didSet {
+            UserDefaults.standard.set(figureChars, forKey: "figureChars")
+        }
+    }
+    
+    init() {
+        self.upperChars = UserDefaults.standard.object(forKey: "upperChars") as? Bool ?? true
+        self.specialChars = UserDefaults.standard.object(forKey: "specialChars") as? Bool ?? true
+        self.figureChars = UserDefaults.standard.object(forKey: "upperChars") as? Bool ?? true
+    }
+}
+
 private let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.dateStyle = .short
