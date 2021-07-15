@@ -30,31 +30,49 @@ func keyGen() -> String {
     return key
 }
 
-func encryptPass(newPassword: String, key: [UInt8]) -> [UInt8] {
+func encryptPass(website: String, user: String, newPassword: String, keyID: String, usedKey: String) -> String {
     let pass: [UInt8] = Array("\(newPassword)".utf8)
+    let key: [UInt8] = Array("\(usedKey)".utf8)
     
     let iv: [UInt8] = Array("42069".utf8)
     var encPass: Array<UInt8> = Array("187".utf8)
     
-    do {
-        encPass = try Blowfish(key: key, blockMode: CBC(iv: iv), padding: .pkcs7).encrypt(pass)
-    } catch {
-        print(error)
+    //INSERT JSON READER HERE
+    
+    if 1==1 { //CONDITION -> DERIVATIVE OF READER
+        do {
+            encPass = try Blowfish(key: key, blockMode: CBC(iv: iv), padding: .pkcs7).encrypt(pass)
+        } catch {
+            print(error)
+        }
+        
+        let jsonString = "{'website':'\(website)', 'username':'\(user)', 'keyID':'\(keyID)', 'password':'\(encPass)'}"
+        
+        if let jsonData = jsonString.data(using: .utf8),
+            let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+                let memoryPath = documentDirectory.appendingPathComponent("keyHash.json")
+                
+                do {
+                    try jsonData.write(to: memoryPath)
+                } catch {
+                    print ("Not a valid JSON Output")
+                }
+        }
     }
-    return encPass
+    return "Success!"
 }
 
 func hashKey(keyBytes: [UInt8]) -> String {
     
     let stringArray = keyBytes.map { String($0) }
-    let key = stringArray.joined(separator: "")
+    let key = stringArray.joined()
     
     let hash = key.sha256()
     let jsonString = "{'key1':'\(hash)'}"
 
     if let jsonData = jsonString.data(using: .utf8),
         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-            let memoryPath = documentDirectory.appendingPathComponent("memory.json")
+            let memoryPath = documentDirectory.appendingPathComponent("keyHash.json")
             
             do {
                 try jsonData.write(to: memoryPath)
@@ -71,5 +89,5 @@ func hashKey(keyBytes: [UInt8]) -> String {
             return("Key was stored as hash key\(i)")
         }
     }*/
-    return("Key was stored as hash key -")
+    return(hash)
 }

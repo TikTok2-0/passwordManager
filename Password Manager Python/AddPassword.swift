@@ -25,6 +25,7 @@ struct AddPassword: View {
                 SecureField("Password", text: $password)
             }
             Section {
+                // ADD KEYIDENTIFIER AND KEY=SECURE
                 TextField("Key for Encryption", text: $key)
             }
             Section {
