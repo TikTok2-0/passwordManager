@@ -28,10 +28,12 @@ struct PasswordListRow: View {
                 }.frame(width: geometry.size.width/5, height: nil, alignment: .leading)
                 Divider()
                 VStack(alignment: .leading) {
+                    let passwordLength = item[3].count
+                    let hiddenPwd = String(repeating: "*", count: passwordLength)
                     if unlocked {
-                        Text(item[3]).foregroundColor(.red)
-                    } else {
                         Text(item[3])
+                    } else {
+                        Text(hiddenPwd)
                     }
                 }.frame(width: geometry.size.width/5, height: nil, alignment: .leading)
                 

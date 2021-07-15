@@ -9,9 +9,9 @@ import SwiftUI
 
 struct PasswordList: View {
     let testTable = [
-        ["twitter", "alpha", "dahydigital", "passwort"],
-        ["youtube", "omega", "187", "youtube123"],
-        ["github", "kappa", "tiktok2_0", "hlg>kaifu"]
+        ["twitter.com", "alpha", "LightningApps_", "password"],
+        ["youtube.com", "omega", "Apple", "youtube123"],
+        ["github.com", "kappa", "johndoe@gmail.com", "hlg>kaifu"]
     ]
     
     var body: some View {
