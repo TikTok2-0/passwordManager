@@ -37,7 +37,7 @@ func encryptPass(website: String, user: String, newPassword: String, keyID: Stri
     let iv: [UInt8] = Array("42069".utf8)
     var encPass: Array<UInt8> = Array("187".utf8)
     
-    //INSERT JSON READER HERE
+    //let bundlePath = Bundle.main.path(forResource: "keyHash", ofType: "json")
     
     if 1==1 { //CONDITION -> DERIVATIVE OF READER
         do {

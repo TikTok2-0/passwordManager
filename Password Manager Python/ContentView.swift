@@ -20,6 +20,7 @@ struct ContentView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
+                //Text(encryptPass(website: "kaflkjfala",user: "basklfjlkasjg",newPassword: "claksfj",keyID: "dasfjkls",usedKey: "esakfljs") ?? "test")
                 HStack {
                     Picker(selection: $currentView, label: Text("")) {
                         Text("Generate Key").tag("key")

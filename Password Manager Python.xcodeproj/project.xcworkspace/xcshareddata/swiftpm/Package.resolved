@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CryptoSwift",
+        "repositoryURL": "https://github.com/krzyzanowskim/CryptoSwift",
+        "state": {
+          "branch": "master",
+          "revision": "13af4db1aa39e9c7054df442e1ca6227a1aa3927",
+          "version": null
+        }
+      },
+      {
+        "package": "PythonKit",
+        "repositoryURL": "https://github.com/pvieito/PythonKit",
+        "state": {
+          "branch": "master",
+          "revision": "d09e6d33673f4bfb7c9d4af234c9968a0caba9b5",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
