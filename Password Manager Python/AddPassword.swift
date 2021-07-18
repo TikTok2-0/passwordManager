@@ -10,8 +10,14 @@ import SwiftUI
 struct AddPassword: View {
     @State var website: String = ""
     @State var username: String = ""
-    @State var password: String = ""
+    @State var localPassword: String = ""
     @State var key: String = ""
+    @State var keyName: String = ""
+    
+    @Environment(\.managedObjectContext) private var viewContext
+    @Environment (\.presentationMode) var presentationMode
+    @FetchRequest(entity: Passwords.entity(), sortDescriptors: [])
+    var password: FetchedResults<Passwords>
     
     var body: some View {
         VStack {
@@ -20,18 +26,31 @@ struct AddPassword: View {
                 .fontWeight(.bold)
             
             Section {
-                TextField("Website", text: $website)
+                TextField("Name", text: $website)
                 TextField("Username", text: $username)
-                SecureField("Password", text: $password)
+                SecureField("Password", text: $localPassword)
             }
             Section {
-                // ADD KEYIDENTIFIER AND KEY=SECURE
-                TextField("Key for Encryption", text: $key)
+                TextField("Key Name", text: $keyName)
+                SecureField("Key for Encryption", text: $key)
             }
             Section {
                 HStack {
                     Spacer()
-                    Button(action: {}) {
+                    Button(action: {
+                        let newPw = Passwords(context: viewContext)
+                        newPw.website = self.website
+                        newPw.password = self.localPassword
+                        newPw.username = self.username
+                        newPw.keyName = self.keyName
+                        
+                        do {
+                            try viewContext.save()
+                            presentationMode.wrappedValue.dismiss()
+                        } catch {
+                            print(error.localizedDescription)
+                        }
+                    }) {
                         Label("Save", systemImage: "key.icloud")
                     }
                 }

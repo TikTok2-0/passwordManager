@@ -12,6 +12,7 @@ import CryptoSwift
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment (\.presentationMode) var presentationMode
     
     @State var currentView: String = "list"
     let paddingFloat: CGFloat = 15

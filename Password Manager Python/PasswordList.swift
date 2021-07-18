@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct PasswordList: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    @FetchRequest(entity: Passwords.entity(), sortDescriptors: [])
+    var password: FetchedResults<Passwords>
+    
     let testTable = [
         ["twitter.com", "alpha", "LightningApps_", "password"],
         ["youtube.com", "omega", "Apple", "youtube123"],
@@ -19,7 +23,7 @@ struct PasswordList: View {
             VStack {
                 HStack {
                     VStack(alignment: .leading) {
-                        Text("Website").fontWeight(.bold)
+                        Text("Name").fontWeight(.bold)
                     }.frame(width: geometry.size.width/5, height: nil, alignment: .leading)
                     Divider()
                     VStack(alignment: .leading) {
@@ -43,8 +47,11 @@ struct PasswordList: View {
                     }.buttonStyle(.plain).hidden().disabled(true)
                 }.frame(width: nil, height: 20, alignment: .center)
                 ScrollView {
-                    ForEach(testTable, id: \.self) { row in
+                    /*ForEach(testTable, id: \.self) { row in
                         PasswordListRow(item: row, geometry: geometry)
+                    }*/
+                    ForEach(password, id: \.self) { pwd in
+                        PasswordListRow(item: pwd, geometry: geometry)
                     }
                 }
             }.padding()

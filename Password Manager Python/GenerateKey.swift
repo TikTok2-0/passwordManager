@@ -19,7 +19,6 @@ struct GenerateKey: View {
     @State var state: AlertState = .allowed
     
     @Environment(\.managedObjectContext) private var viewContext
-    @Environment (\.presentationMode) var presentationMode
     @FetchRequest(entity: Keys.entity(), sortDescriptors: [])
     var key: FetchedResults<Keys>
     
@@ -47,7 +46,6 @@ struct GenerateKey: View {
                         
                         do {
                             try viewContext.save()
-                            presentationMode.wrappedValue.dismiss()
                             print("Saved successfully")
                             print(hashedKey)
                         } catch {
