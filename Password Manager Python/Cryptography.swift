@@ -8,7 +8,7 @@
 import Foundation
 import CryptoSwift
 
-func keyGen() -> String {
+func keyGen() -> (String, String) {
     let rndInt1 = Int64.random(in: 0..<9223372036854775807)
     let rndInt2 = Int64.random(in: 0..<9223372036854775807)
     
@@ -26,8 +26,8 @@ func keyGen() -> String {
     let stringArray = keyBytes.map { String($0) }
     let key = stringArray.joined(separator: "-")
     print(key)
-    hashKey(keyBytes: keyBytes)
-    return key
+    let hashedKey = hashKey(keyBytes: keyBytes)
+    return (key, hashedKey)
 }
 
 func encryptPass(website: String, user: String, newPassword: String, keyID: String, usedKey: String) -> String {
@@ -64,11 +64,14 @@ func encryptPass(website: String, user: String, newPassword: String, keyID: Stri
 
 func hashKey(keyBytes: [UInt8]) -> String {
     
+    
     let stringArray = keyBytes.map { String($0) }
     let key = stringArray.joined()
     
     let hash = key.sha256()
-    let jsonString = "{'key1':'\(hash)'}"
+    
+    
+    /*let jsonString = "{'key1':'\(hash)'}"
 
     if let jsonData = jsonString.data(using: .utf8),
         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
@@ -79,15 +82,6 @@ func hashKey(keyBytes: [UInt8]) -> String {
             } catch {
                 return ("Not a valid JSON Output")
             }
-    }
-    /*let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {_ in
-        let iPath = documentDirectory.appendingPathComponent("i.txt")
-        do {
-            try i.read(from: iPath)
-            i += 1
-        } catch {
-            return("Key was stored as hash key\(i)")
-        }
     }*/
     return(hash)
 }

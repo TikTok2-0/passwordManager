@@ -11,6 +11,7 @@ import PythonKit
 import CryptoSwift
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) private var viewContext
     
     @State var currentView: String = "list"
     let paddingFloat: CGFloat = 15
@@ -67,6 +68,8 @@ struct ContentView: View {
                     PasswordList()
                 } else if currentView == "gen" {
                     GeneratePassword()
+                } else if currentView == "settings" {
+                    Settings()
                 }
             }
         }.frame(width: 900, height: 480, alignment: .leading)
@@ -100,19 +103,19 @@ class UserData: ObservableObject {
         }
     }
     
-    @Published var keyName: String {
+    @Published var keyName: Int {
         didSet {
             UserDefaults.standard.set(keyName, forKey: "keyName")
         }
     }
-    var names = ["Alpha", "Beta", "Delta", "Kappa", "Omega"]
+    var names = ["Alpha", "Alpha", "Beta", "Delta", "Kappa", "Omega"]
     
     init() {
         self.upperChars = UserDefaults.standard.object(forKey: "upperChars") as? Bool ?? true
         self.specialChars = UserDefaults.standard.object(forKey: "specialChars") as? Bool ?? true
         self.figureChars = UserDefaults.standard.object(forKey: "upperChars") as? Bool ?? true
         
-        self.keyName = UserDefaults.standard.object(forKey: "keyName") as? String ?? names[0]
+        self.keyName = UserDefaults.standard.object(forKey: "keyName") as? Int ?? 0
     }
 }
 
