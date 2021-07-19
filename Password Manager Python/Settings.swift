@@ -10,9 +10,12 @@ import SwiftUI
 struct Settings: View {
     @State var confirm: Bool = false
     @State var showIDs: Bool = false
+    @State var deletePasswords: Bool = false
     
     @FetchRequest(entity: Keys.entity(), sortDescriptors: [])
     var key: FetchedResults<Keys>
+    @FetchRequest(entity: Passwords.entity(), sortDescriptors: [])
+    var password: FetchedResults<Passwords>
     @Environment(\.managedObjectContext) private var viewContext
     
     var body: some View {
@@ -31,7 +34,20 @@ struct Settings: View {
                 }.padding()
             }
             
-            
+            Button(action: { deletePasswords.toggle() }) {
+                Label("Delete all passwords", systemImage: "trash").foregroundColor(.red)
+            }.alert(isPresented: $deletePasswords) {
+                Alert(title: Text("Attention"), message: Text("This will permanently delete all your passwords"), primaryButton: .cancel(), secondaryButton: .destructive(Text("Delete"), action: {
+                    for singlePass in password {
+                        viewContext.delete(singlePass)
+                        do {
+                            try viewContext.save()
+                        } catch {
+                            print(error.localizedDescription)
+                        }
+                    }
+                }))
+            }
             
             Button(action: { confirm.toggle() }) {
                 Label("Reset", systemImage: "trash").foregroundColor(.red)
@@ -46,6 +62,14 @@ struct Settings: View {
                         }
                     }
                     UserData().keyName = 0
+                    for singlePass in password {
+                        viewContext.delete(singlePass)
+                        do {
+                            try viewContext.save()
+                        } catch {
+                            print(error.localizedDescription)
+                        }
+                    }
                 }))
             }
             

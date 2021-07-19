@@ -12,20 +12,27 @@ struct PasswordListRow: View {
     @ObservedObject var item: FetchedResults<Passwords>.Element
     var geometry: GeometryProxy
     
+    @State var localBackgroundColor: NSColor = NSColor(red: 1, green: 1, blue: 1, alpha: 0)
+    @State var localTextColor: NSColor = NSColor(red: 0, green: 0, blue: 0, alpha: 1)
+    
     @State var unlocked: Bool = false
     @State var showMenu: Bool = false
     @State var showAlert: Bool = false
     @State var editPassword: Bool = false
     
     var body: some View {
+        ZStack {
+            RoundedRectangle(cornerSize: CGSize(width: 15, height: 15))
+                .fill(Color(localBackgroundColor))
+            
             HStack {
                 VStack(alignment: .leading) {
                     Text(item.website)
-                }.frame(width: geometry.size.width/5, height: nil, alignment: .leading)
+                }.frame(width: geometry.size.width/6, height: nil, alignment: .leading)
                 Divider()
                 VStack(alignment: .leading) {
                     Text(item.keyName)
-                }.frame(width: geometry.size.width/5, height: nil, alignment: .leading)
+                }.frame(width: geometry.size.width/10, height: nil, alignment: .leading)
                 Divider()
                 VStack(alignment: .leading) {
                     Text(item.username)
@@ -39,7 +46,7 @@ struct PasswordListRow: View {
                     } else {
                         Text(hiddenPwd)
                     }
-                }.frame(width: geometry.size.width/5, height: nil, alignment: .leading)
+                }.frame(width: geometry.size.width/3, height: nil, alignment: .leading)
                 
                 Spacer()
                 Button(action: {
@@ -94,6 +101,15 @@ struct PasswordListRow: View {
                         }
                     }.padding().buttonStyle(.borderless)
                 }
+            }.padding(5).foregroundColor(Color(localTextColor)).onHover { item in
+                if item {
+                    localBackgroundColor = NSColor(red: 52/255, green: 109/255, blue: 251/255, alpha: 0.9)
+                    localTextColor = NSColor(red: 1, green: 1, blue: 1, alpha: 1)
+                } else {
+                    localBackgroundColor = NSColor(red: 1, green: 1, blue: 1, alpha: 0)
+                    localTextColor = NSColor(red: 0, green: 0, blue: 0, alpha: 1)
+                }
             }
+        }
     }
 }

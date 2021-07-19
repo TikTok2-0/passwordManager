@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PasswordList: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(entity: Passwords.entity(), sortDescriptors: [])
+    @FetchRequest(entity: Passwords.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Passwords.website, ascending: true)])
     var password: FetchedResults<Passwords>
     
     let testTable = [
@@ -24,11 +24,11 @@ struct PasswordList: View {
                 HStack {
                     VStack(alignment: .leading) {
                         Text("Name").fontWeight(.bold)
-                    }.frame(width: geometry.size.width/5, height: nil, alignment: .leading)
+                    }.frame(width: geometry.size.width/6, height: nil, alignment: .leading)
                     Divider()
                     VStack(alignment: .leading) {
                         Text("Key").fontWeight(.bold)
-                    }.frame(width: geometry.size.width/5, height: nil, alignment: .leading)
+                    }.frame(width: geometry.size.width/10, height: nil, alignment: .leading)
                     Divider()
                     VStack(alignment: .leading) {
                         Text("Username/E-Mail").fontWeight(.bold)
@@ -36,7 +36,7 @@ struct PasswordList: View {
                     Divider()
                     VStack(alignment: .leading) {
                         Text("Password").fontWeight(.bold)
-                    }.frame(width: geometry.size.width/5, height: nil, alignment: .leading)
+                    }.frame(width: geometry.size.width/3, height: nil, alignment: .leading)
                     
                     Spacer()
                     Button(action: {}) {
@@ -45,11 +45,8 @@ struct PasswordList: View {
                     Button(action: {}) {
                         Image(systemName: "ellipsis.circle")
                     }.buttonStyle(.plain).hidden().disabled(true)
-                }.frame(width: nil, height: 20, alignment: .center)
-                ScrollView {
-                    /*ForEach(testTable, id: \.self) { row in
-                        PasswordListRow(item: row, geometry: geometry)
-                    }*/
+                }.frame(width: nil, height: 20, alignment: .center).padding(5)
+                ScrollView(showsIndicators: false) {
                     ForEach(password, id: \.self) { pwd in
                         PasswordListRow(item: pwd, geometry: geometry)
                     }

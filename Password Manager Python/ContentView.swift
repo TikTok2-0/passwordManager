@@ -18,6 +18,8 @@ struct ContentView: View {
     let paddingFloat: CGFloat = 15
     @State var showSheet: Bool = false
     @State var activeSheet: ActiveSheet?
+    @State var searchList: Bool = false
+    @State var searchInput: String = ""
     
     var body: some View {
         GeometryReader { geometry in
@@ -34,6 +36,15 @@ struct ContentView: View {
                         .overlay(
                             HStack {
                                 Spacer()
+                                Button(action: { searchList.toggle() }) {
+                                    Image(systemName: "magnifyingglass")
+                                        .imageScale(.large)
+                                }.buttonStyle(.link).popover(isPresented: $searchList, attachmentAnchor: .point(.leading), arrowEdge: .leading) {
+                                    VStack {
+                                        Text("Search Passwords").font(.title3).fontWeight(.bold)
+                                        TextField("", text: $searchInput)
+                                    }.padding()
+                                }
                                 Button(action: { activeSheet = .addPassword }) {
                                     Image(systemName: "plus")
                                         .imageScale(.large)
