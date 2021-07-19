@@ -35,16 +35,19 @@ struct ContentView: View {
                         .multilineTextAlignment(.center)
                         .overlay(
                             HStack {
+                                if searchList {
+                                    FirstResponderNSSearchFieldRepresentable(text: $searchInput).frame(width: 150, height: 20, alignment: .center)
+                                }
                                 Spacer()
                                 Button(action: { searchList.toggle() }) {
                                     Image(systemName: "magnifyingglass")
                                         .imageScale(.large)
-                                }.buttonStyle(.link).popover(isPresented: $searchList, attachmentAnchor: .point(.leading), arrowEdge: .leading) {
+                                }.buttonStyle(.link)/*.popover(isPresented: $searchList, attachmentAnchor: .point(.leading), arrowEdge: .leading) {
                                     VStack {
                                         Text("Search Passwords").font(.title3).fontWeight(.bold)
                                         FirstResponderNSSearchFieldRepresentable(text: $searchInput).frame(width: 150, height: 20, alignment: .center)
                                     }.padding()
-                                }
+                                }*/
                                 Button(action: { activeSheet = .addPassword }) {
                                     Image(systemName: "plus")
                                         .imageScale(.large)
