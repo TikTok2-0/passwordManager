@@ -12,6 +12,8 @@ struct PasswordList: View {
     @FetchRequest(entity: Passwords.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Passwords.website, ascending: true)])
     var password: FetchedResults<Passwords>
     
+    var searchText: String
+    
     let testTable = [
         ["twitter.com", "alpha", "LightningApps_", "password"],
         ["youtube.com", "omega", "Apple", "youtube123"],
@@ -47,7 +49,9 @@ struct PasswordList: View {
                     }.buttonStyle(.plain).hidden().disabled(true)
                 }.frame(width: nil, height: 20, alignment: .center).padding(5)
                 ScrollView(showsIndicators: false) {
-                    ForEach(password, id: \.self) { pwd in
+                    ForEach(password.filter {
+                        self.searchText.isEmpty ? true : $0.website.contains(self.searchText)
+                    }, id: \.self) { pwd in
                         PasswordListRow(item: pwd, geometry: geometry)
                     }
                 }
@@ -56,8 +60,10 @@ struct PasswordList: View {
     }
 }
 
+/*
 struct PasswordList_Previews: PreviewProvider {
     static var previews: some View {
         PasswordList()
     }
 }
+*/

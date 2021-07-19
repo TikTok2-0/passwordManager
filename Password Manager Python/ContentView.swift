@@ -42,7 +42,7 @@ struct ContentView: View {
                                 }.buttonStyle(.link).popover(isPresented: $searchList, attachmentAnchor: .point(.leading), arrowEdge: .leading) {
                                     VStack {
                                         Text("Search Passwords").font(.title3).fontWeight(.bold)
-                                        TextField("", text: $searchInput)
+                                        FirstResponderNSSearchFieldRepresentable(text: $searchInput).frame(width: 150, height: 20, alignment: .center)
                                     }.padding()
                                 }
                                 Button(action: { activeSheet = .addPassword }) {
@@ -77,7 +77,7 @@ struct ContentView: View {
                 if currentView == "key" {
                     GenerateKey()
                 } else if currentView == "list" {
-                    PasswordList()
+                    PasswordList(searchText: self.searchInput)
                 } else if currentView == "gen" {
                     GeneratePassword()
                 } else if currentView == "settings" {
@@ -144,28 +144,55 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+struct FirstResponderNSSearchFieldRepresentable: NSViewControllerRepresentable {
 
-    /*List {
-        Section(header: Text("Passwords")) {
-            NavigationLink(destination: PasswordList()) {
-                Label("View Passwords", systemImage: "eye.fill")
-            }
-            NavigationLink(destination: Text("test")) {
-                Label("Manage Password", systemImage: "list.bullet")
-            }
-            NavigationLink(destination: Text("test")) {
-                Label("Generate Key", systemImage: "key.fill")
-            }
-            NavigationLink(destination: GeneratePassword()) {
-                Label("Generate Password", systemImage: "dice.fill")
-            }
-        }
-        Section(header: Text("Debugging")) {
-            Text("Python Script: \(helloworld)")
-            Text("Hash: \(hash)")
-            Text("\(geometry.size.width) x \(geometry.size.height)")
-        }
+    @Binding var text: String
+
+      func makeNSViewController(
+        context: NSViewControllerRepresentableContext<FirstResponderNSSearchFieldRepresentable>
+      ) -> FirstResponderNSSearchFieldController {
+          return FirstResponderNSSearchFieldController(text: $text)
+      }
+
+      func updateNSViewController(
+        _ nsViewController: FirstResponderNSSearchFieldController,
+        context: NSViewControllerRepresentableContext<FirstResponderNSSearchFieldRepresentable>
+      ) {
+      }
+}
+
+class FirstResponderNSSearchFieldController: NSViewController {
+
+  @Binding var text: String
+  var isFirstResponder : Bool = true
+
+    init(text: Binding<String>, isFirstResponder : Bool = true) {
+    self._text = text
+    super.init(nibName: nil, bundle: nil)
+  }
+
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+  override func loadView() {
+    let searchField = NSSearchField()
+    searchField.delegate = self
+    
+    self.view = searchField
+  }
+
+  override func viewDidAppear() {
+    self.view.window?.makeFirstResponder(self.view)
+  }
+}
+
+
+extension FirstResponderNSSearchFieldController: NSSearchFieldDelegate {
+
+  func controlTextDidChange(_ obj: Notification) {
+    if let textField = obj.object as? NSTextField {
+      self.text = textField.stringValue
     }
-    .listStyle(.sidebar)*/
-//.frame(width: geometry.size.width, height: geometry.size.height)
-//.frame(minWidth: 2560*0.15, idealWidth: 2560*0.7, maxWidth: 2560/2, minHeight: 1600*0.15, idealHeight: 1600*0.7, maxHeight: 2560/2, alignment: .center)
+  }
+}
