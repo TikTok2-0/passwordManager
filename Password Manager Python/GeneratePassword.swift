@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct GeneratePassword: View {
-    @State var generatedPassword: String = "Generated Password"
+    @State var generatedPassword: String = ""
     @State var passwordLength: Double = 12
     @ObservedObject var userData = UserData()
+    
+    @State var savePassword: Bool = false
     
     let paddingFloat: CGFloat = 15
     
@@ -130,8 +132,10 @@ struct GeneratePassword: View {
                         }
                     }
                     Spacer()
-                    Button(action: {}) {
+                    Button(action: { savePassword.toggle() }) {
                         Label("Save password", systemImage: "key.icloud")
+                    }.popover(isPresented: $savePassword) {
+                        AddPassword(localPassword: self.generatedPassword)
                     }
                 }.frame(width: geometry.size.width/1.5, height: nil, alignment: .center)
                 

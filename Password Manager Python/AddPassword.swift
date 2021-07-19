@@ -10,7 +10,7 @@ import SwiftUI
 struct AddPassword: View {
     @State var website: String = ""
     @State var username: String = ""
-    @State var localPassword: String = ""
+    @State var localPassword: String
     @State var key: String = ""
     @State var keyName: String = ""
     
@@ -28,11 +28,11 @@ struct AddPassword: View {
             Section {
                 TextField("Name", text: $website)
                 TextField("Username", text: $username)
-                SecureField("Password", text: $localPassword)
+                TextField("Password", text: $localPassword)
             }
             Section {
                 TextField("Key Name", text: $keyName)
-                SecureField("Key for Encryption", text: $key)
+                TextField("Key for Encryption", text: $key)
             }
             Section {
                 HStack {
@@ -61,8 +61,10 @@ struct AddPassword: View {
     }
 }
 
+/*
 struct AddPassword_Previews: PreviewProvider {
     static var previews: some View {
         AddPassword()
     }
 }
+*/

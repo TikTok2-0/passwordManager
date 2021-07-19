@@ -41,7 +41,7 @@ struct ContentView: View {
                                 .popover(item: $activeSheet, attachmentAnchor: .point(.leading), arrowEdge: .leading) { item in
                                     switch item {
                                     case .addPassword:
-                                        AddPassword()
+                                        AddPassword(localPassword: "")
                                     case .generatePassword:
                                         GeneratePasswordPopover()
                                     case .generateKey:

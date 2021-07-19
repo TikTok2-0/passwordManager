@@ -12,6 +12,8 @@ struct GeneratePasswordPopover: View {
     @State var passwordLength: Double = 12
     @ObservedObject var userData = UserData()
     
+    @State var savePassword: Bool = false
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text(generatedPassword)
@@ -66,8 +68,10 @@ struct GeneratePasswordPopover: View {
             
             HStack {
                 Spacer()
-                Button(action: {}) {
+                Button(action: { savePassword.toggle() }) {
                     Label("Save password", systemImage: "key.icloud")
+                }.popover(isPresented: $savePassword) {
+                    AddPassword(localPassword: self.generatedPassword)
                 }
             }
         }
