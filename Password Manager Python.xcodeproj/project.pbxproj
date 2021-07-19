@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3E42B0C8269EFC11005C5B96 /* Cryptography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E42B0C7269EFC11005C5B96 /* Cryptography.swift */; };
+		F60CA86426A5AEC400DB461E /* EditPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60CA86326A5AEC400DB461E /* EditPassword.swift */; };
 		F653C96826A4B63D0051456D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F653C96726A4B63D0051456D /* Settings.swift */; };
 		F65B20DB269EDC7F0022D8CF /* GenerateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65B20DA269EDC7F0022D8CF /* GenerateKey.swift */; };
 		F672FA9C269F7515008C19E0 /* AddPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672FA9B269F7515008C19E0 /* AddPassword.swift */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		3E42B0C7269EFC11005C5B96 /* Cryptography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cryptography.swift; sourceTree = "<group>"; };
+		F60CA86326A5AEC400DB461E /* EditPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPassword.swift; sourceTree = "<group>"; };
 		F653C96726A4B63D0051456D /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		F65B20DA269EDC7F0022D8CF /* GenerateKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateKey.swift; sourceTree = "<group>"; };
 		F672FA9B269F7515008C19E0 /* AddPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPassword.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				F6B28780269E2AB100DB01F2 /* Password_Manager_PythonApp.swift */,
 				F6B28782269E2AB100DB01F2 /* ContentView.swift */,
 				F672FA9B269F7515008C19E0 /* AddPassword.swift */,
+				F60CA86326A5AEC400DB461E /* EditPassword.swift */,
 				F65B20DA269EDC7F0022D8CF /* GenerateKey.swift */,
 				F6A3AB44269E4E3F0088292E /* GeneratePassword.swift */,
 				F672FA9D269F86AE008C19E0 /* GeneratePasswordPopover.swift */,
@@ -315,6 +318,7 @@
 				F6EDF4D926A4CC0F00E83A5A /* Passwords+CoreDataProperties.swift in Sources */,
 				F6B28783269E2AB100DB01F2 /* ContentView.swift in Sources */,
 				F6B2878D269E2AB200DB01F2 /* Password_Manager_Python.xcdatamodeld in Sources */,
+				F60CA86426A5AEC400DB461E /* EditPassword.swift in Sources */,
 				F6B28781269E2AB100DB01F2 /* Password_Manager_PythonApp.swift in Sources */,
 				F6A3AB45269E4E3F0088292E /* GeneratePassword.swift in Sources */,
 				F672FAA0269F9152008C19E0 /* PasswordListRow.swift in Sources */,
@@ -473,6 +477,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Password Manager Python/Password Manager Python.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
@@ -494,7 +499,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 0.3.2;
+				MARKETING_VERSION = 0.5.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "hkrieger.Password-Manager-Python";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -507,6 +512,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Password Manager Python/Password Manager Python.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
@@ -528,7 +534,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 0.3.2;
+				MARKETING_VERSION = 0.5.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "hkrieger.Password-Manager-Python";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

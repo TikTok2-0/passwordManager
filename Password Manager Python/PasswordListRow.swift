@@ -15,6 +15,7 @@ struct PasswordListRow: View {
     @State var unlocked: Bool = false
     @State var showMenu: Bool = false
     @State var showAlert: Bool = false
+    @State var editPassword: Bool = false
     
     var body: some View {
             HStack {
@@ -51,45 +52,48 @@ struct PasswordListRow: View {
                     }
                 }.buttonStyle(.plain)
                         
-
-                Menu {
-                    Button(action: {}) {
-                        Text("Edit Password")
-                    }
-                    
-                    Button(action: {
-                        let pasteboard = NSPasteboard.general
-                        pasteboard.clearContents()
-                        pasteboard.setString(item.username, forType: .string)
-                    }) {
-                        Text("Copy Username")
-                    }
-                    
-                    Button(action: {
-                        let pasteboard = NSPasteboard.general
-                        pasteboard.clearContents()
-                        pasteboard.setString(item.password, forType: .string)
-                    }) {
-                        Text("Copy Password")
-                    }
-                    
-                    Button(action: {
-                        showAlert.toggle()
-                    }) {
-                        Text("Delete Password").foregroundColor(.red)
-                    }.alert(isPresented: $showAlert) {
-                        Alert(title: Text("Attention"), message: Text("This will delete the password permanently."), primaryButton: .cancel(), secondaryButton: .destructive(Text("Delete"), action: {
-                            viewContext.delete(item)
-                            do {
-                                try viewContext.save()
-                            } catch {
-                                print(error.localizedDescription)
-                            }
-                        }))
-                    }
-                } label: {
+                Button(action: { showMenu.toggle() }) {
                     Image(systemName: "ellipsis.circle")
-                }.menuStyle(.automatic)
+                }.buttonStyle(.plain).popover(isPresented: $showMenu, attachmentAnchor: .point(.leading), arrowEdge: .leading) {
+                    VStack(alignment: .leading) {
+                        Button(action: { editPassword.toggle() }) {
+                            Text("Edit Password")
+                        }.popover(isPresented: $editPassword, attachmentAnchor: .point(.leading), arrowEdge: .leading) {
+                            EditPassword(passwordData: item)
+                        }
+                        
+                        Button(action: {
+                            let pasteboard = NSPasteboard.general
+                            pasteboard.clearContents()
+                            pasteboard.setString(item.username, forType: .string)
+                        }) {
+                            Text("Copy Username")
+                        }
+                        
+                        Button(action: {
+                            let pasteboard = NSPasteboard.general
+                            pasteboard.clearContents()
+                            pasteboard.setString(item.password, forType: .string)
+                        }) {
+                            Text("Copy Password")
+                        }
+                        
+                        Button(action: {
+                            showAlert.toggle()
+                        }) {
+                            Text("Delete Password").foregroundColor(.red)
+                        }.alert(isPresented: $showAlert) {
+                            Alert(title: Text("Attention"), message: Text("This will delete the password permanently."), primaryButton: .cancel(), secondaryButton: .destructive(Text("Delete"), action: {
+                                viewContext.delete(item)
+                                do {
+                                    try viewContext.save()
+                                } catch {
+                                    print(error.localizedDescription)
+                                }
+                            }))
+                        }
+                    }.padding().buttonStyle(.borderless)
+                }
             }
     }
 }
