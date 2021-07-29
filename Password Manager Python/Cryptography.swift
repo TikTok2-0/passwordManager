@@ -30,7 +30,7 @@ func keyGen() -> (String, String) {
     return (key, hashedKey)
 }
 
-func encryptPass(website: String, user: String, newPassword: String, keyID: String, usedKey: String) -> String {
+func encryptPass(website: String, user: String, newPassword: String, keyID: String, usedKey: String) -> (String, String) {
     let pass: [UInt8] = Array("\(newPassword)".utf8)
     let key: [UInt8] = Array("\(usedKey)".utf8)
     
@@ -59,7 +59,29 @@ func encryptPass(website: String, user: String, newPassword: String, keyID: Stri
                 }
         }
     }
-    return "Success!"
+    let ivMap = iv.map { String($0) }
+    let ivString = ivMap.joined()
+
+    return ("Success!", ivString)
+}
+
+func decryptPass(website: String, keyID: String, usedKey: String, password: String, iv: String) -> String {
+    let pass: [UInt8] = Array("(password)".utf8)
+    let key: [UInt8] = Array("(usedKey)".utf8)
+
+    let iv: [UInt8] = Array("(iv)".utf8)
+    var decPass: Array<UInt8> = Array("187".utf8)
+
+    do {
+        decPass = try Blowfish(key: key, blockMode: CBC(iv: iv), padding: .pkcs7).decrypt(pass)
+    } catch {
+        print(error)
+    }
+
+    let stringArray = decPass.map { String($0) }
+    let decString = stringArray.joined()
+
+    return decString
 }
 
 func hashKey(keyBytes: [UInt8]) -> String {
