@@ -18,6 +18,8 @@ struct AddPassword: View {
     @Environment (\.presentationMode) var presentationMode
     @FetchRequest(entity: Passwords.entity(), sortDescriptors: [])
     var password: FetchedResults<Passwords>
+    @FetchRequest(entity: Keys.entity(), sortDescriptors: [])
+    var keys: FetchedResults<Keys>
     
     var body: some View {
         VStack {
@@ -38,11 +40,17 @@ struct AddPassword: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        let newPw = Passwords(context: viewContext)
-                        newPw.website = self.website
-                        newPw.password = self.localPassword
-                        newPw.username = self.username
-                        newPw.keyName = self.keyName
+                        let keyArray: [UInt8] = Array(self.key.utf8)
+                        print("\n\n TEST \n\n")
+                        for item in keys {
+                            if item.hashedKey == hashKey(keyBytes: keyArray) { //HELP, ITS NOT WORKING, NEED PROFESSIONAL CODING ASSISTANCE ASAP!!1! YANNIK CANT DO THIS; I CANT DO THIS; PLEASE DO THIS FOR US, thank, kussi
+                                let newPw = Passwords(context: viewContext)
+                                newPw.website = self.website
+                                (newPw.iv, newPw.password) = encryptPass(newPassword: self.localPassword, keyID: self.keyName, usedKey: self.key)
+                                newPw.username = self.username
+                                newPw.keyName = self.keyName
+                            }
+                        }
                         
                         do {
                             try viewContext.save()
