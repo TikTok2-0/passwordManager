@@ -18,7 +18,7 @@ func keyGen() -> (String, String) {
     var keyBytes: Array<UInt8> = Array("187".utf8)
     
     do {
-        keyBytes = try PKCS5.PBKDF2(password: userName, salt: MasterPass, iterations: 2048, keyLength: 24, variant: .sha256).calculate()
+        keyBytes = try PKCS5.PBKDF2(password: userName, salt: MasterPass, iterations: 4096, keyLength: 32, variant: .sha256).calculate()
     } catch {
         print(error)
     }
@@ -27,46 +27,36 @@ func keyGen() -> (String, String) {
     let stringArray = keyBytes.map { String($0) }
     let key = stringArray.joined()
     print(key)
-    let hashedKey = hashKey(keyBytes: keyBytes)
+    let hashedKey = hashKey(key: key)
     return (key, hashedKey)
 }
 
-func encryptPass(newPassword: String, keyID: String, usedKey: String) -> (String, String) {
+func encryptPass(newPassword: String, keyID: String, usedKey: String) -> (String, [UInt8]) {
     let pass: [UInt8] = Array("\(newPassword)".utf8)
     let key: [UInt8] = Array("\(usedKey)".utf8)
     
-    let iv: [UInt8] = Array("42069".utf8)
+    let iv: [UInt8] = AES.randomIV(AES.blockSize)
     var encPass: Array<UInt8> = Array("187".utf8)
-    
-    /*func getCurrentJob()->  {
-            var error: NSError?
-            if let fetchedResults = managedObjectContext!.executeFetchRequest(NSFetchRequest(entityName:"Job"), error: &error) {
-                return fetchedResults[0]
-            }
-        }*/
-    
-    if 1==1 { //CONDITION -> DERIVATIVE OF READER
-        do {
-            encPass = try Blowfish(key: key, blockMode: CBC(iv: iv), padding: .pkcs7).encrypt(pass)
-        } catch {
-            print(error)
-        }
+
+    do {
+        encPass = try AES(key: key, blockMode: CBC(iv: iv), padding: .pkcs7).encrypt(pass)
+    } catch {
+        print("ENC ERROR:", error)
     }
-    let ivMap = iv.map { String($0) }
-    let ivString = ivMap.joined()
+    
     let pwdMap = encPass.map { String($0) }
     let pwdString = pwdMap.joined()
 
     print("\n\n encPass: \(pwdString) \n\n")
     
-    return (ivString, pwdString)
+    return (pwdString, iv)
 }
 
 func decryptPass(website: String, keyID: String, usedKey: String, password: String, iv: String) -> String {
-    let pass: [UInt8] = Array("(password)".utf8)
-    let key: [UInt8] = Array("(usedKey)".utf8)
+    let pass: [UInt8] = Array("\(password)".utf8)
+    let key: [UInt8] = Array("\(usedKey)".utf8)
 
-    let iv: [UInt8] = Array("(iv)".utf8)
+    let iv: [UInt8] = Array("\(iv)".utf8)
     var decPass: Array<UInt8> = Array("187".utf8)
 
     do {
@@ -81,9 +71,7 @@ func decryptPass(website: String, keyID: String, usedKey: String, password: Stri
     return decString
 }
 
-func hashKey(keyBytes: [UInt8]) -> String {
-    let stringArray = keyBytes.map { String($0) }
-    let key = stringArray.joined()
+func hashKey(key: String) -> String {
     let hash = key.sha256()
     return(hash)
 }

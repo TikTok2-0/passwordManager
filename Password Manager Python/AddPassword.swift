@@ -40,13 +40,16 @@ struct AddPassword: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        let keyArray: [UInt8] = Array(self.key.utf8)
+                        //let keyArray: [UInt8] = Array(self.key.utf8)
                         print("\n\n TEST \n\n")
                         for item in keys {
-                            if item.hashedKey == hashKey(keyBytes: keyArray) { //HELP, ITS NOT WORKING, NEED PROFESSIONAL CODING ASSISTANCE ASAP!!1! YANNIK CANT DO THIS; I CANT DO THIS; PLEASE DO THIS FOR US, thank, kussi
+                            //print("\(keyArray)")
+                            //print("\n\(item.hashedKey ?? "Default"), \(hashKey(key: self.key))")
+                            
+                            if item.hashedKey == hashKey(key: self.key) {
                                 let newPw = Passwords(context: viewContext)
                                 newPw.website = self.website
-                                (newPw.iv, newPw.password) = encryptPass(newPassword: self.localPassword, keyID: self.keyName, usedKey: self.key)
+                                (newPw.password, newPw.iv) = encryptPass(newPassword: self.localPassword, keyID: self.keyName, usedKey: self.key)
                                 newPw.username = self.username
                                 newPw.keyName = self.keyName
                             }

@@ -20,7 +20,7 @@ extension Passwords {
     @NSManaged public var username: String
     @NSManaged public var website: String
     @NSManaged public var keyName: String
-    @NSManaged public var iv: String
+    @NSManaged public var iv: [UInt8]
 
 }
 
